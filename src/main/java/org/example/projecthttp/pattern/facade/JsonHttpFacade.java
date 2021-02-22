@@ -9,7 +9,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class JsonHttpFacade<T> {
+public class JsonHttpFacade {
 
     ObjectMapper objectMapper = new ObjectMapper();
     HttpClient httpClient = HttpClient.newBuilder().build();

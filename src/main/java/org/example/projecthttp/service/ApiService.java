@@ -11,9 +11,7 @@ public interface ApiService {
 
 
 
-    public void add(Contact contact) throws IOException, InterruptedException;
-
-    void authorization(User user) throws IOException, InterruptedException;
+    void post(User user) throws IOException, InterruptedException;
 
     public void get() throws IOException, InterruptedException;
 

@@ -37,7 +37,7 @@ public class MobAppApiService {
     private void runProgram() throws IOException, InterruptedException {
         while (true) {
             user = getDataUser();
-            orderService.authorization(user);
+            orderService.post(user);
             showMenu();
         }
     }
@@ -51,15 +51,16 @@ public class MobAppApiService {
         login = getLogin();
         password = getPassword();
         date = getDate();
-        System.out.println("login "+login);
-        System.out.println("password "+password);
-        System.out.println("date "+date);
+        System.out.println("login " + login);
+        System.out.println("password " + password);
+        System.out.println("date " + date);
 
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
         user.setDate_born(date);
         return user;
+
     }
 
     private String getDate() throws IOException {

@@ -13,10 +13,8 @@ import java.util.Arrays;
 
 public class ConactApiService implements ApiService {
 
-
     TokenResponse tokenResponse;
     User user; ///user
-
     JsonHttpFacade jsonHttpFacade = new JsonHttpFacade(); //My facade
 
     public ConactApiService(User user) {
@@ -24,25 +22,13 @@ public class ConactApiService implements ApiService {
     }
 
 
-    @Override
-    public void add(Contact contact) throws IOException, InterruptedException {
-
-
-        System.out.println(tokenResponse.getToken());
-
-
-        StatusResponse statusResponse = (StatusResponse) jsonHttpFacade
-                .add("https://mag-contacts-api.herokuapp.com/contacts/add",
-                        StatusResponse.class,
-                        tokenResponse.getToken(),contact);
-    }
 
     @Override
     public void get() throws IOException, InterruptedException {
         {
             System.out.println("ConactApiService.get");
         }
-        ContactsResponse contactsResponse = (ContactsResponse)
+        ContactsResponse contactsResponse =
                 jsonHttpFacade
                         .get("https://mag-contacts-api.herokuapp.com/contacts",
                                 ContactsResponse.class,
@@ -52,9 +38,9 @@ public class ConactApiService implements ApiService {
     }
 
     @Override
-    public void authorization(User user) throws IOException, InterruptedException {
+    public void post(User user) throws IOException, InterruptedException {
 
-        tokenResponse = (TokenResponse) jsonHttpFacade
+        tokenResponse = jsonHttpFacade
                 .post("https://mag-contacts-api.herokuapp.com/login"
                         , user,
                         TokenResponse.class);
