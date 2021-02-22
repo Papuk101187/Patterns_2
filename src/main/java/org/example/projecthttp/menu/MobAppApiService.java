@@ -1,6 +1,5 @@
 package org.example.projecthttp.menu;
 
-import org.example.projecthttp.buttons.ButtonAddContactsApiService;
 import org.example.projecthttp.buttons.ButtonGetContactsApiService;
 import org.example.projecthttp.details.User;
 import org.example.projecthttp.service.ApiService;
@@ -22,7 +21,6 @@ public class MobAppApiService {
     public MobAppApiService(ApiService serviceOrders) throws IOException {
         this.orderService = serviceOrders;
         lists.add(new ButtonGetContactsApiService(orderService));
-        lists.add(new ButtonAddContactsApiService(orderService));
     }
 
     private void showMenu() throws IOException, InterruptedException {

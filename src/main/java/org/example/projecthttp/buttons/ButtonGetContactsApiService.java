@@ -1,5 +1,4 @@
 package org.example.projecthttp.buttons;
-import org.example.projecthttp.details.ContactsResponse;
 import org.example.projectorder.details.OrsersParser;
 import org.example.projecthttp.menu.MenuItemApiService;
 
@@ -14,7 +13,7 @@ public class ButtonGetContactsApiService implements MenuItemApiService {
     OrsersParser orsersParser = new OrsersParser();
 
     public ButtonGetContactsApiService(ApiService orderServ) {
-        service=orderServ;
+        service = orderServ;
     }
 
     @Override
@@ -23,8 +22,7 @@ public class ButtonGetContactsApiService implements MenuItemApiService {
 
         service.get();
 
-
-        }
+    }
 
 
     @Override
@@ -37,7 +35,6 @@ public class ButtonGetContactsApiService implements MenuItemApiService {
     public boolean closeAfter() {
         return false;
     }
-
 
 
 }
