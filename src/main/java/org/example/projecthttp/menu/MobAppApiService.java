@@ -1,6 +1,8 @@
 package org.example.projecthttp.menu;
 
-import org.example.projecthttp.buttons.ButtonGetContactsApiService;
+import org.example.projecthttp.buttons.ButtonGet;
+import org.example.projecthttp.buttons.ButtonGetAuthorized;
+import org.example.projecthttp.buttons.ButtonpostAuthorized;
 import org.example.projecthttp.details.User;
 import org.example.projecthttp.service.ApiService;
 
@@ -20,7 +22,9 @@ public class MobAppApiService {
 
     public MobAppApiService(ApiService serviceOrders) throws IOException {
         this.orderService = serviceOrders;
-        lists.add(new ButtonGetContactsApiService(orderService));
+        lists.add(new ButtonGet(orderService));
+        lists.add(new ButtonGetAuthorized(orderService));
+        lists.add(new ButtonpostAuthorized(orderService));
     }
 
     private void showMenu() throws IOException, InterruptedException {
@@ -33,7 +37,8 @@ public class MobAppApiService {
 
     private void runProgram() throws IOException, InterruptedException {
         while (true) {
-            //user = getDataUser();
+
+            user = getDataUser();
             orderService.post(user);
             showMenu();
         }

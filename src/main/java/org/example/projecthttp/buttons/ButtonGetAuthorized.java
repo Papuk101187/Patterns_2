@@ -1,18 +1,18 @@
 package org.example.projecthttp.buttons;
-import org.example.projectorder.details.OrsersParser;
-import org.example.projecthttp.menu.MenuItemApiService;
 
+import org.example.projecthttp.menu.MenuItemApiService;
 import org.example.projecthttp.service.ApiService;
+import org.example.projectorder.details.OrsersParser;
 
 import java.io.IOException;
 
-public class ButtonGetContactsApiService implements MenuItemApiService {
+public class ButtonGetAuthorized implements MenuItemApiService {
 
 
     ApiService service;
     OrsersParser orsersParser = new OrsersParser();
 
-    public ButtonGetContactsApiService(ApiService orderServ) {
+    public ButtonGetAuthorized(ApiService orderServ) {
         service = orderServ;
     }
 
@@ -20,14 +20,14 @@ public class ButtonGetContactsApiService implements MenuItemApiService {
     public void doAction() throws IOException, InterruptedException {
 
 
-        service.get();
+        service.getAuthorized();
 
     }
 
 
     @Override
     public String getName() {
-        return "T get(String uri, Class<T> responseClass)";
+        return "get Authorized (ДЛЯ ПРИМЕРА)";
     }
 
 

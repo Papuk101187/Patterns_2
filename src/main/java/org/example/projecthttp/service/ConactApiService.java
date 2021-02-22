@@ -5,10 +5,8 @@ import org.example.projecthttp.details.ContactsResponse;
 import org.example.projecthttp.details.TokenResponse;
 import org.example.projecthttp.details.User;
 import org.example.projecthttp.pattern.facade.JsonHttpFacade;
-import org.example.projecthttp.pattern.facade.dto.StatusResponse;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 
 public class ConactApiService implements ApiService {
@@ -34,6 +32,19 @@ public class ConactApiService implements ApiService {
     }
 
     @Override
+    public void getAuthorized() throws IOException, InterruptedException {
+
+        ContactsResponse contactsResponse =
+                jsonHttpFacade
+                        .getAuthorized("https://mag-contacts-api.herokuapp.com/users2", ContactsResponse.class
+                        ,tokenResponse.getToken());
+
+        System.out.println("ContactsResponse  "+contactsResponse.getUsers());
+
+    }
+
+
+    @Override
     public void post(User user) throws IOException, InterruptedException {
 
         tokenResponse = jsonHttpFacade
@@ -41,5 +52,23 @@ public class ConactApiService implements ApiService {
                         , user,
                         TokenResponse.class);
     }
+
+
+    @Override
+    public void postAuthorized(Contact contact) throws IOException, InterruptedException {
+
+        user=user;
+
+        tokenResponse = jsonHttpFacade
+                .postAuthorized("https://mag-contacts-api.herokuapp.com/contacts/add"
+                        , user,
+                        TokenResponse.class,tokenResponse.getToken());
+
+    }
+
+
+
+
+
 
 }
