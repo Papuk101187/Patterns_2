@@ -33,7 +33,7 @@ public class MobAppApiService {
 
     private void runProgram() throws IOException, InterruptedException {
         while (true) {
-            user = getDataUser();
+            //user = getDataUser();
             orderService.post(user);
             showMenu();
         }

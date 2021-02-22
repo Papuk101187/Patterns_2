@@ -24,16 +24,13 @@ public class ConactApiService implements ApiService {
 
     @Override
     public void get() throws IOException, InterruptedException {
-        {
-            System.out.println("ConactApiService.get");
-        }
+
         ContactsResponse contactsResponse =
                 jsonHttpFacade
-                        .get("https://mag-contacts-api.herokuapp.com/contacts",
-                                ContactsResponse.class,
-                                tokenResponse.getToken());
+                        .get("https://mag-contacts-api.herokuapp.com/users", ContactsResponse.class);
 
-        System.out.println(Arrays.toString(contactsResponse.getContacts())); //для наглядности
+        System.out.println("ContactsResponse  "+contactsResponse.getUsers());
+
     }
 
     @Override

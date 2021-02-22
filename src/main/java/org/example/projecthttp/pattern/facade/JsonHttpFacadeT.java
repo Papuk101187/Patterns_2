@@ -1,7 +1,6 @@
 package org.example.projecthttp.pattern.facade;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.projecthttp.details.Contact;
 
 import java.io.IOException;
 import java.net.URI;
@@ -9,7 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class JsonHttpFacade {
+public class JsonHttpFacadeT {
 
     ObjectMapper objectMapper = new ObjectMapper();
     HttpClient httpClient = HttpClient.newBuilder().build();
@@ -35,10 +34,7 @@ public class JsonHttpFacade {
                 .header("Accept", "application/json")
                 .header("Authorization", "Bearer ")
                 .build();
-
-        System.out.println(request);
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
         return (T) objectMapper.readValue(response.body(), responseClass);
     }
 }

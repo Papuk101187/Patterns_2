@@ -27,7 +27,7 @@ public class ButtonGetContactsApiService implements MenuItemApiService {
 
     @Override
     public String getName() {
-        return "Получить контакты из сервера ";
+        return "T get(String uri, Class<T> responseClass)";
     }
 
 
