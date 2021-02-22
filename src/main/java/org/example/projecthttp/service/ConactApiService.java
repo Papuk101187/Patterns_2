@@ -1,10 +1,12 @@
 package org.example.projecthttp.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.example.projecthttp.details.Contact;
 import org.example.projecthttp.details.ContactsResponse;
 import org.example.projecthttp.details.TokenResponse;
 import org.example.projecthttp.details.User;
 import org.example.projecthttp.pattern.facade.JsonHttpFacade;
+import org.example.projecthttp.pattern.facade.JsonHttpFacadeTEST;
 import org.example.projecthttp.pattern.facade.dto.StatusResponse;
 
 import java.io.IOException;
@@ -14,7 +16,9 @@ public class ConactApiService implements ApiService {
 
     TokenResponse tokenResponse; //token
     User user; ///user
+
     JsonHttpFacade jsonHttpFacade = new JsonHttpFacade(); //My facade
+    JsonHttpFacadeTEST jsonHttpFacadeTEST = new JsonHttpFacadeTEST();
 
     public ConactApiService(User user) {
         this.user = user;
