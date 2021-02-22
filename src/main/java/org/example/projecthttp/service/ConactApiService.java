@@ -22,7 +22,6 @@ public class ConactApiService implements ApiService {
     }
 
 
-
     @Override
     public void get() throws IOException, InterruptedException {
         {
@@ -45,6 +44,5 @@ public class ConactApiService implements ApiService {
                         , user,
                         TokenResponse.class);
     }
-
 
 }

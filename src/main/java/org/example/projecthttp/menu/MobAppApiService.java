@@ -13,7 +13,6 @@ import java.util.List;
 
 public class MobAppApiService {
 
-
     List<MenuItemApiService> lists = new ArrayList();
 
     ApiService orderService;
