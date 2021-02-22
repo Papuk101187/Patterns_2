@@ -1,10 +1,7 @@
 package org.example.projecthttp.pattern.facade;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.projecthttp.details.Contact;
-import org.example.projecthttp.details.ContactsResponse;
-import org.example.projecthttp.details.TokenResponse;
-import org.example.projecthttp.details.User;
-import org.example.projecthttp.pattern.facade.dto.StatusResponse;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,30 +9,27 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class JsonHttpFacade {
+public class JsonHttpFacade<T> {
 
     ObjectMapper objectMapper = new ObjectMapper();
     HttpClient httpClient = HttpClient.newBuilder().build();
     private String token;
 
 
-    public TokenResponse authorization(String url,User user) throws IOException, InterruptedException {
-
-        String uze = objectMapper.writeValueAsString(user);
+    public <T> T post(String uri, Object body, Class<T> responseClass) throws IOException, InterruptedException {
+        String uze = objectMapper.writeValueAsString(body);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(uri))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(uze))
                 .build();
-
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         String responce = response.body();
-        TokenResponse tokenResponse = objectMapper.readValue(responce, TokenResponse.class);
-        return tokenResponse;
+        T respon = (T) objectMapper.readValue(response.body(), responseClass);
+        return respon;
     }
 
-    public ContactsResponse get(String url, String token) throws IOException, InterruptedException {
-
+    public <T> T get(String url, Class<T> responseClass, String token) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -43,13 +37,10 @@ public class JsonHttpFacade {
                 .header("Authorization", "Bearer " + token)
                 .build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        ContactsResponse contactsResponse = objectMapper.readValue(response.body(), ContactsResponse.class);
-        return contactsResponse;
+        return (T) objectMapper.readValue(response.body(), responseClass);
     }
 
-
-    public StatusResponse add(String url, Contact contact, String token) throws IOException, InterruptedException {
-
+    public <T> T add(String url, Class<T> responseClass, String token, Contact contact) throws IOException, InterruptedException {
         ObjectMapper objectMapper = new ObjectMapper();
         String ond = objectMapper.writeValueAsString(contact);
         HttpRequest request = HttpRequest.newBuilder()
@@ -59,9 +50,9 @@ public class JsonHttpFacade {
                 .header("Authorization", "Bearer " + token)
                 .POST(HttpRequest.BodyPublishers.ofString(ond))
                 .build();
-
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        StatusResponse statusResponse = objectMapper.readValue(response.body(), StatusResponse.class);
-        return statusResponse;
+
+        T responce = (T) objectMapper.readValue(response.body(), responseClass);
+        return responce;
     }
 }

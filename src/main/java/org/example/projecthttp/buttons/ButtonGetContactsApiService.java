@@ -21,8 +21,7 @@ public class ButtonGetContactsApiService implements MenuItemApiService {
     public void doAction() throws IOException, InterruptedException {
 
 
-        ContactsResponse userResponse = service.get();
-
+        service.get();
 
 
         }

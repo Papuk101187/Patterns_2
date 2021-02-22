@@ -33,6 +33,9 @@ public class ButtonAddContactsApiService implements MenuItemApiService {
         String name = n.readLine();
         Contact contact = new Contact(type,value,name);
 
+        {
+            System.out.println("FAZE № 1 ");
+        }
 
         service.add(contact);
 

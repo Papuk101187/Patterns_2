@@ -14,9 +14,9 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
 
 
-        Service service = new OrderService(); //  Chain of Responsibility , Decorator
-        MobAppOrderPizza mobAppOrderPizza = new MobAppOrderPizza(service);
-        mobAppOrderPizza.start();
+//        Service service = new OrderService(); //  Chain of Responsibility , Decorator
+//        MobAppOrderPizza mobAppOrderPizza = new MobAppOrderPizza(service);
+//        mobAppOrderPizza.start();
 
 
         ApiService service1 = new ConactApiService(new User());   // Facade

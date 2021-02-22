@@ -11,11 +11,11 @@ public interface ApiService {
 
 
 
-    public StatusResponse add(Contact contact) throws IOException, InterruptedException;
+    public void add(Contact contact) throws IOException, InterruptedException;
 
     void authorization(User user) throws IOException, InterruptedException;
 
-    public ContactsResponse get() throws IOException, InterruptedException;
+    public void get() throws IOException, InterruptedException;
 
 
 
